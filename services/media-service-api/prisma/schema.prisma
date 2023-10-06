@@ -9,3 +9,12 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Media {
+  id          Int    @id @default(autoincrement())
+  title       String @unique
+  type        String
+  genre       String
+  releaseYear Int
+  rating      Int
+}
