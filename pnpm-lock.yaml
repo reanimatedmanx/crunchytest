@@ -35,6 +35,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.10
         version: 18.2.10
+      mobx:
+        specifier: ^6.10.2
+        version: 6.10.2
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -44,6 +47,9 @@ importers:
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.15)(eslint@8.51.0)(react@18.2.0)(typescript@4.9.5)
+      rxjs:
+        specifier: ^7.8.1
+        version: 7.8.1
       typescript:
         specifier: ^4.9.5
         version: 4.9.5
@@ -8698,6 +8704,10 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.8
+
+  /mobx@6.10.2:
+    resolution: {integrity: sha512-B1UGC3ieK3boCjnMEcZSwxqRDMdzX65H/8zOHbuTY8ZhvrIjTUoLRR2TP2bPqIgYRfb3+dUigu8yMZufNjn0LQ==}
+    dev: false
 
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
