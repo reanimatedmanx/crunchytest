@@ -5,5 +5,8 @@
   "scripts": {},
   "keywords": [],
   "author": "Reanimated Man X <mail@rmx.codes>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@nestjs/cli": "^10.1.18"
+  }
 }
