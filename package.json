@@ -1,0 +1,9 @@
+{
+  "name": "crunchytest",
+  "version": "0.0.0",
+  "description": "A code challenge to assess my knowledge and skills in TypeScript, React, RxJS, OOP, SOLID and MobX",
+  "scripts": {},
+  "keywords": [],
+  "author": "Reanimated Man X <mail@rmx.codes>",
+  "license": "UNLICENSED"
+}
