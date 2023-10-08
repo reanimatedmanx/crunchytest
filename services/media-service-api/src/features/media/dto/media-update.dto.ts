@@ -1,31 +1,31 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Prisma } from '@prisma/client';
-import { Transform } from 'class-transformer';
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger'
+import { Prisma } from '@prisma/client'
+import { Transform } from 'class-transformer'
+import { IsNotEmpty, IsNumber } from 'class-validator'
 
 export class MediaUpdateDto implements Prisma.MediaUpdateInput {
   @ApiProperty()
-  title: string;
+  title: string
 
   @ApiProperty()
-  type: string;
+  type: string
 
   @ApiProperty()
-  genre: string;
-
-  @IsNotEmpty()
-  @IsNumber()
-  @Transform(({ value }) => {
-    return Number(value);
-  })
-  @ApiProperty()
-  releaseYear: number;
+  genre: string
 
   @IsNotEmpty()
   @IsNumber()
   @Transform(({ value }) => {
-    return Number(value);
+    return Number(value)
   })
   @ApiProperty()
-  rating: number;
+  releaseYear: number
+
+  @IsNotEmpty()
+  @IsNumber()
+  @Transform(({ value }) => {
+    return Number(value)
+  })
+  @ApiProperty()
+  rating: number
 }

@@ -1,4 +1,4 @@
-import { Flex, Box } from "@radix-ui/themes";
+import { Flex, Box } from '@radix-ui/themes';
 
 interface ListProps {
   items: React.ReactElement[];
@@ -18,6 +18,6 @@ export const List: React.FC<ListProps> = ({
 
 // #region Meta
 
-List.displayName = "List";
+List.displayName = 'List';
 
 // #endregion

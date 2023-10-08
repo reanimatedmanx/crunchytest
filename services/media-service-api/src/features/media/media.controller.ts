@@ -8,16 +8,11 @@ import {
   Post,
   Put,
   Query,
-} from '@nestjs/common';
-import { MediaService } from './media.service';
-import {
-  MediaDto,
-  MediaCreateDto,
-  MediaUpdateDto,
-  MediaDeleteDto,
-} from './dto';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { MediaFindDto } from './dto/media-find.dto';
+} from '@nestjs/common'
+import { MediaService } from './media.service'
+import { MediaDto, MediaCreateDto, MediaUpdateDto, MediaDeleteDto } from './dto'
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
+import { MediaFindDto } from './dto/media-find.dto'
 
 @Controller('media')
 @ApiTags('Media')
@@ -33,7 +28,7 @@ export class MediaController {
   async createMedia(@Body() body: MediaCreateDto) {
     return this.mediaService.createMedia({
       data: body,
-    });
+    })
   }
 
   @Get('find')
@@ -54,7 +49,7 @@ export class MediaController {
             },
           }
         : {}),
-    });
+    })
   }
 
   @Get(':id')
@@ -67,7 +62,7 @@ export class MediaController {
       where: {
         id,
       },
-    });
+    })
   }
 
   @Put(':id')
@@ -82,7 +77,7 @@ export class MediaController {
       where: {
         id,
       },
-    });
+    })
   }
 
   @Delete(':id')
@@ -92,6 +87,6 @@ export class MediaController {
       where: {
         id: query.id,
       },
-    });
+    })
   }
 }

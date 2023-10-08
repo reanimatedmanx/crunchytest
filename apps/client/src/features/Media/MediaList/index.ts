@@ -1,1 +1,1 @@
-export * from "./MediaList";
+export * from './MediaList'

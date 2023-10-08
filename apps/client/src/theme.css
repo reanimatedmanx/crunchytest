@@ -1,11 +1,11 @@
 @font-face {
-  font-family: LuckiestGuy;
-  src: url(/public/fonts/LuckiestGuy-Regular.ttf);
+	font-family: LuckiestGuy;
+	src: url(/public/fonts/LuckiestGuy-Regular.ttf);
 }
 
 /* theme-config.css */
 .radix-themes {
-  --default-font-size: 1rem;
-  --orange-11: #ff7a00;
-  --orange-12: #ff5e00;
+	--default-font-size: 1rem;
+	--orange-11: #ff7a00;
+	--orange-12: #ff5e00;
 }

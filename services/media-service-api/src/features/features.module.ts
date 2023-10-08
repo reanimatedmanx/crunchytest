@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { MediaModule } from './media/media.module';
+import { Module } from '@nestjs/common'
+import { MediaModule } from './media/media.module'
 
 @Module({
   imports: [MediaModule],

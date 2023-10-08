@@ -1,23 +1,23 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Prisma } from '@prisma/client';
+import { ApiProperty } from '@nestjs/swagger'
+import { Prisma } from '@prisma/client'
 
 export class MediaDto implements Prisma.MediaCreateInput {
   @ApiProperty()
-  title: string;
+  title: string
 
   @ApiProperty()
-  type: string;
+  type: string
 
   @ApiProperty()
-  genre: string;
+  genre: string
 
   @ApiProperty()
-  releaseYear: number;
+  releaseYear: number
 
   @ApiProperty()
-  rating: number;
+  rating: number
 
   constructor(data: Partial<MediaDto>) {
-    Object.assign(this, data);
+    Object.assign(this, data)
   }
 }
