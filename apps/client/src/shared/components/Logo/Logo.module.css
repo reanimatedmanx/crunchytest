@@ -1,0 +1,9 @@
+.link {
+  font-family: LuckiestGuy;
+  font-size: 2.2rem;
+  /* TODO: Use global theme tokens */
+  background: -webkit-linear-gradient(#ff5e00, #ff7a00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
