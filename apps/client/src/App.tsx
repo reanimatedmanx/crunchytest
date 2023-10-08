@@ -1,4 +1,4 @@
-import { Container, Theme } from '@radix-ui/themes'
+import { Container, Flex, Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import './App.css'
 
@@ -8,6 +8,7 @@ import { Content } from './shared/components/Content'
 import { MediaList } from './features/Media/MediaList'
 import { AddMediaButton } from './features/Media/shared'
 import { Logo } from './shared/components/Logo'
+import { MediaFilterBar } from './features/Media/MediaFilterBar'
 
 function App() {
   // TODO: Remove me
@@ -22,13 +23,16 @@ function App() {
       scaling="100%"
     >
       <Container>
-        <Header>
-          <Logo />
-          <AddMediaButton />
-        </Header>
-        <Content>
-          <MediaList />
-        </Content>
+        <Flex direction="column" gap="5" mt="5">
+          <Header>
+            <Logo />
+            <AddMediaButton />
+          </Header>
+          <Content>
+            <MediaFilterBar />
+            <MediaList />
+          </Content>
+        </Flex>
       </Container>
     </Theme>
   )
