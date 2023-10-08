@@ -1,0 +1,15 @@
+.input {
+  min-width: 4rem;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: '0 10px';
+  height: 2rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  border: 0;
+  border-radius: 0.2rem;
+  background: #3a3a3a;
+  color: white;
+}
