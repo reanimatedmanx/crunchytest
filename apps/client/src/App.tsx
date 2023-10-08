@@ -6,26 +6,28 @@ import './theme.css'
 import { Header } from './shared/components/Header'
 import { Content } from './shared/components/Content'
 import { MediaList } from './features/Media/MediaList'
+import { AddMediaButton } from './features/Media/shared'
 function App() {
-	// TODO: Remove me
-	console.info(process.env.REACT_APP_PUBLIC_API)
+  // TODO: Remove me
+  console.info(process.env.REACT_APP_PUBLIC_API)
 
-	return (
-		<Theme
-			appearance="dark"
-			accentColor="blue"
-			grayColor="gray"
-			panelBackground="solid"
-			scaling="100%"
-		>
-			<Container>
-				<Header></Header>
-				<Content>
-					<MediaList />
-				</Content>
-			</Container>
-		</Theme>
-	)
+  return (
+    <Theme
+      appearance="dark"
+      accentColor="blue"
+      grayColor="gray"
+      panelBackground="solid"
+      scaling="100%"
+    >
+      <Container>
+        <Header></Header>
+        <Content>
+          <AddMediaButton />
+          <MediaList />
+        </Content>
+      </Container>
+    </Theme>
+  )
 }
 
 export default App
