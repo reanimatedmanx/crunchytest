@@ -1,3 +1,8 @@
+@font-face {
+  font-family: LuckiestGuy;
+  src: url(/public/fonts/LuckiestGuy-Regular.ttf);
+}
+
 /* theme-config.css */
 .radix-themes {
     --default-font-size: 18px;
