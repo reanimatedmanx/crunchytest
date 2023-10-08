@@ -8,3 +8,9 @@
 
 # production
 /build
+
+
+# environment variables
+.env.development.local
+.env.production.local
+.env
