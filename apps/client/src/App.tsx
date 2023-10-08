@@ -1,4 +1,6 @@
-import { Container } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
+import "./theme.css";
 
 // TODO Add import aliases
 import { Header } from "./shared/components/Header";
@@ -9,12 +11,14 @@ function App() {
   console.info(process.env.REACT_APP_PUBLIC_API);
 
   return (
-    <Container>
-      <Header></Header>
-      <Content>
-        <MediaList />
-      </Content>
-    </Container>
+    <Theme appearance="dark">
+      <Container>
+        <Header></Header>
+        <Content>
+          <MediaList />
+        </Content>
+      </Container>
+    </Theme>
   );
 }
 
