@@ -4,9 +4,8 @@ import { Input } from '../../../shared/components/Input'
 
 export const MediaFilterBar: React.FC = () => {
   return (
-    <Flex justify="between" gap="5">
+    <Flex justify="between" gap="5" align="baseline">
       <Input placeholder="What are you looking for?" />
-
       <Button>
         <HamburgerMenuIcon /> Menu
       </Button>
