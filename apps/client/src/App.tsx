@@ -6,9 +6,9 @@ import './App.css'
 import { Header } from './shared/components/Header'
 import { Content } from './shared/components/Content'
 import { MediaList } from './features/Media/MediaList'
-import { AddMediaButton } from './features/Media/shared'
 import { Logo } from './shared/components/Logo'
 import { MediaFilterBar } from './features/Media/MediaFilterBar'
+import { MediaForm } from './features/Media/MediaForm'
 
 function App() {
   // TODO: Remove me
@@ -26,7 +26,7 @@ function App() {
         <Flex direction="column" gap="5" mt="5">
           <Header>
             <Logo />
-            <AddMediaButton />
+            <MediaForm />
           </Header>
           <Content>
             <MediaFilterBar />

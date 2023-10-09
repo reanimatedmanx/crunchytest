@@ -1,15 +1,17 @@
 .input {
-  min-width: 4rem;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: '0 10px';
-  height: 2rem;
-  font-size: 0.9rem;
+  flex: 1;
+  display: flex;
+  max-width: inherit;
+  min-height: 2.4rem;
   line-height: 1;
-  border: 0;
-  border-radius: 0.2rem;
-  background: #3a3a3a;
-  color: white;
+  margin-top: 1rem;
+  padding: 0 0 0 1rem;
+  border-radius: var(--radius-2);
+  font-size: var(--default-font-size);
+  color: var(--gray-3);
+  box-shadow: 0 0 0 0.125rem var(--gray-11);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 0.15rem var(--gray-9);
 }
