@@ -2,7 +2,7 @@ import { makeObservable } from 'mobx'
 
 export class UIStore {
   constructor() {
-    makeObservable(this)
+    // makeObservable(this)
   }
 
   // #region Observables
