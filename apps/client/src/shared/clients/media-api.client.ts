@@ -1,16 +1,12 @@
 import axios, { AxiosInstance } from 'axios'
 
 export class MediaApiClient {
-  private instance: AxiosInstance
+  private static client: AxiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_MEDIA_API_URL,
+    headers: {},
+  })
 
-  constructor() {
-    this.instance = axios.create({
-      baseURL: process.env.REACT_APP_MEDIA_API_URL,
-      headers: {},
-    })
-  }
-
-  getHealthcheck() {
-    return this.instance.get('/healthcheck')
+  static getHealthcheck() {
+    return MediaApiClient.client.get('/healthcheck')
   }
 }
