@@ -7,6 +7,12 @@ import * as manifest from '@manifest'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
+  // #region Settings
+
+  app.enableCors()
+
+  // #endregion
+
   // #region Global Validation
   app.useGlobalPipes(
     new ValidationPipe({
