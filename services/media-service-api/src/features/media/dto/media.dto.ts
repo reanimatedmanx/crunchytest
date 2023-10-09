@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Prisma } from '@prisma/client'
 
-export class MediaDto implements Prisma.MediaCreateInput {
+export class MediaDto implements Prisma.MediaCreateWithoutTypeInput {
   @ApiProperty()
   title: string
 

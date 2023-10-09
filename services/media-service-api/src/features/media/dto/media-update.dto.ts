@@ -3,7 +3,7 @@ import { Prisma } from '@prisma/client'
 import { Transform } from 'class-transformer'
 import { IsNotEmpty, IsNumber } from 'class-validator'
 
-export class MediaUpdateDto implements Prisma.MediaUpdateInput {
+export class MediaUpdateDto implements Prisma.MediaUpdateWithoutTypeInput {
   @ApiProperty()
   title: string
 
