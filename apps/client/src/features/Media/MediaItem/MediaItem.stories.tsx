@@ -16,5 +16,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    title: 'One Piece',
+    releaseYear: 1993,
+  },
 }

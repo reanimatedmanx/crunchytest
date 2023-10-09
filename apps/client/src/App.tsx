@@ -30,7 +30,9 @@ function App() {
           </Header>
           <Content>
             <MediaFilterBar />
-            <MediaList />
+            <Flex direction="column" mt="5">
+              <MediaList />
+            </Flex>
           </Content>
         </Flex>
       </Container>

@@ -1,33 +1,85 @@
-import { Flex, Card, Inset, Text, Strong } from "@radix-ui/themes";
+import {
+  Flex,
+  Card,
+  Inset,
+  Text,
+  Strong,
+  Heading,
+  Badge,
+  Button,
+} from '@radix-ui/themes'
+import styles from './MediaItem.module.css'
 
-export const MediaItem: React.FC = () => {
+// TODO: Extend this interface from a shared, API SDK generated model,
+// ? or a protobuf generated one.
+export interface MediaItemProps {
+  title: string
+  releaseYear: number
+}
+
+export const MediaItem: React.FC<MediaItemProps> = ({
+  title,
+  releaseYear,
+}: MediaItemProps) => {
   return (
-    <Card size="2" style={{ width: "100%" }}>
-      <Flex direction="row">
-        <Inset
-          clip="padding-box"
-          side="top"
-          p="current"
-          style={{ minWidth: 110 }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            alt="Bold typography"
+    <Card size="2" className={styles.card}>
+      <Flex direction="column" gap="5">
+        <Flex direction="row" gap="5">
+          <Inset
+            clip="padding-box"
+            side="all"
+            p="current"
             style={{
-              display: "block",
-              objectFit: "cover",
-              width: "100%",
-              height: 140,
-              backgroundColor: "var(--gray-5)",
+              minWidth: 120,
+              maxWidth: 120,
+              height: 120,
+              maxHeight: 120,
             }}
-          />
-        </Inset>
-        <Text as="p" size="3">
-          <Strong>Typography</Strong> is the art and technique of arranging type
-          to make written language legible, readable and appealing when
-          displayed.
-        </Text>
+          >
+            {/* ? TODO: Extend schema to provide `thumbnailUrl` field to S3 Bucket */}
+            <picture>
+              <source srcSet="thumbnail.webp" type="image/webp" />
+              <img
+                src="thumbnail.jpg"
+                alt="Thumbnail description"
+                style={{
+                  display: 'block',
+                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </picture>
+          </Inset>
+          <Flex direction="column">
+            <Heading as="h2">{title}</Heading>
+            <Heading as="h3">{releaseYear}</Heading>
+            <Text as="p" size="3">
+              {/* ? TODO: Extend schema to provide `description` field */}
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
+              corrupti obcaecati.
+            </Text>
+          </Flex>
+        </Flex>
+        <Flex direction="row" justify="between">
+          {/* TODO: Extract to `Tags` */}
+          <Flex gap="2">
+            <Badge size="1">
+              <Strong>Tag 1</Strong>
+            </Badge>
+            <Badge size="1">
+              <Strong>Tag 2</Strong>
+            </Badge>
+            <Badge size="1">
+              <Strong>Tag 3</Strong>
+            </Badge>
+          </Flex>
+          <Flex gap="2">
+            <Button color="gray">Edit</Button>
+            <Button color="red">Delete</Button>
+          </Flex>
+        </Flex>
       </Flex>
     </Card>
-  );
-};
+  )
+}
