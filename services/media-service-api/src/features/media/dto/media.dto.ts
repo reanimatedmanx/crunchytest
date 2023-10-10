@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Prisma } from '@prisma/client'
 
-export class MediaDto implements Prisma.MediaCreateWithoutTypeInput {
+export class MediaDto implements Prisma.MediaCreateWithoutMediaTypeInput {
   @ApiProperty()
   title: string
 
@@ -17,7 +17,7 @@ export class MediaDto implements Prisma.MediaCreateWithoutTypeInput {
   @ApiProperty()
   rating: number
 
-  constructor(data: Partial<MediaDto>) {
+  constructor(data?: Partial<MediaDto>) {
     Object.assign(this, data)
   }
 }
