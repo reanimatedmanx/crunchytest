@@ -8,7 +8,7 @@ export class MediaStore {
   static HEALTHCHECK_RETRIES = 200
   static ACTIVE_RETRY_DELAY_MS = 2000
 
-  mediaApiObservable$ = from(MediaApiClient.getHealthcheck()).pipe(
+  $healthcheck = from(MediaApiClient.getHealthcheck()).pipe(
     switchMap((response) => {
       if (response.status !== 200) {
         throw response.statusText
@@ -30,7 +30,7 @@ export class MediaStore {
   constructor() {
     makeObservable(this)
 
-    this.mediaApiObservable$.subscribe({
+    this.$healthcheck.subscribe({
       next: () => this.updateApiState(MediaApiState.Pending),
       error: (error) => {
         this.updateApiState(MediaApiState.Error)
