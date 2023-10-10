@@ -3,8 +3,6 @@
 import { Header } from '../../../shared/components/Header'
 import { Content } from '../../../shared/components/Content'
 import { MediaList } from '../MediaList'
-import { useContext, useEffect, useMemo } from 'react'
-import { AppStore } from '../../../shared/stores/app.store'
 import { observer } from 'mobx-react'
 import { Container, Flex } from '@radix-ui/themes'
 import { Logo } from '../../../shared/components/Logo'
