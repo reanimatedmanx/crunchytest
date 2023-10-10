@@ -1,26 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { MediaItem } from './MediaItem'
+import { TagGroup } from './TagGroup'
 
 const meta = {
-  title: 'Features/Media/MediaItem',
-  component: MediaItem,
+  title: 'Components/TagGroup',
+  component: TagGroup,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {},
-} satisfies Meta<typeof MediaItem>
+} satisfies Meta<typeof TagGroup>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    title: 'One Piece',
-    type: 'tv-show',
-    genre: 'Comedy',
-    releaseYear: 1999,
-    rating: 10,
+    tags: ['a', 'b', 'c'],
   },
 }

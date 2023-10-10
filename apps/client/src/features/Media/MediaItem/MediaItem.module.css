@@ -1,5 +1,16 @@
 .card {
-  background: #2b2b2b;
-  border: 1px solid #3f3f3f;
-  color: white;
+  background: var(--gray-12);
+  border: 0.1rem solid #3f3f3f;
+}
+
+.cardTitle {
+  color: var(--gray-3);
+}
+
+.cardSubtitle {
+  color: var(--gray-9);
+}
+
+.cardDescription {
+  color: var(--gray-3);
 }

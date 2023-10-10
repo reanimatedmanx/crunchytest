@@ -1,0 +1,18 @@
+.badge {
+  display: flex;
+  justify-content: center;
+  background: var(--orange-12);
+  color: var(--default-font-color);
+  min-width: 4rem;
+  max-height: 1.8rem;
+  padding-inline: 1rem;
+}
+
+.badgeText {
+  font-size: x-small;
+  text-transform: uppercase;
+  text-shadow:
+    5px 0px 7px var(--orange-10),
+    -3px 0px 7px var(--orange-11),
+    0px 1px 2px var(--gray-12);
+}

@@ -1,7 +1,7 @@
 // TODO: Fill with actual tests
-import { MediaItem } from './MediaItem'
+import { TagGroup } from './TagGroup'
 
-describe('MediaItem', () => {
+describe('TagGroup', () => {
   it('should match snapshot', () => {
     // Arrange
     // Act
