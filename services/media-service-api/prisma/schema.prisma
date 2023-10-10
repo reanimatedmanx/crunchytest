@@ -13,8 +13,8 @@ datasource db {
 model Media {
   id          Int       @id @default(autoincrement())
   title       String    @unique
-  mediaType   String
-  type        MediaType @relation(fields: [mediaType], references: [name])
+  type        String
+  mediaType   MediaType @relation(fields: [type], references: [name])
   genre       String
   releaseYear Int
   rating      Int

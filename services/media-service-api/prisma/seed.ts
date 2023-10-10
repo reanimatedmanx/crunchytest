@@ -23,7 +23,7 @@ async function main() {
     update: {},
     create: {
       title: 'One Piece',
-      type: {
+      mediaType: {
         connectOrCreate: {
           create: {
             name: MediaType.TVShow,

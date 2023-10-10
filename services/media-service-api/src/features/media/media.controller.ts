@@ -27,12 +27,7 @@ export class MediaController {
   })
   async createMedia(@Body() body: MediaCreateDto) {
     return this.mediaService.createMedia({
-      data: {
-        ...body,
-        type: {
-          connect: { name: body.type },
-        },
-      },
+      data: body,
     })
   }
 
@@ -55,9 +50,7 @@ export class MediaController {
           : {}),
         ...(query.type
           ? {
-              type: {
-                name: query.type,
-              },
+              type: query.type,
             }
           : {}),
       },
@@ -85,12 +78,7 @@ export class MediaController {
   })
   async updateMedia(@Param('id') id: number, @Body() body: MediaUpdateDto) {
     return this.mediaService.updateMedia({
-      data: {
-        ...body,
-        type: {
-          connect: { name: body.type },
-        },
-      },
+      data: body,
       where: {
         id,
       },

@@ -2,11 +2,11 @@
 CREATE TABLE "Media" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "title" TEXT NOT NULL,
-    "mediaType" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
     "genre" TEXT NOT NULL,
     "releaseYear" INTEGER NOT NULL,
     "rating" INTEGER NOT NULL,
-    CONSTRAINT "Media_mediaType_fkey" FOREIGN KEY ("mediaType") REFERENCES "MediaType" ("name") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Media_type_fkey" FOREIGN KEY ("type") REFERENCES "MediaType" ("name") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

@@ -3,7 +3,7 @@ import { Prisma } from '@prisma/client'
 import { Transform } from 'class-transformer'
 import { IsNotEmpty, IsNumber } from 'class-validator'
 
-export class MediaCreateDto implements Prisma.MediaCreateWithoutTypeInput {
+export class MediaCreateDto implements Prisma.MediaCreateWithoutMediaTypeInput {
   @ApiProperty()
   title: string
 
