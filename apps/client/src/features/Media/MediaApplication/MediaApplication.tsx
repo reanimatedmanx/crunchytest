@@ -9,8 +9,21 @@ import { Logo } from '../../../shared/components/Logo'
 import { MediaFilterBar } from '../MediaFilterBar'
 import { MediaForm } from '../MediaForm'
 import { NetworkObserver } from './NetworkObserver'
+import { useContext, useEffect } from 'react'
+import { AppStore } from '../../../shared/stores'
 
 export const MediaApplication = observer(() => {
+  const { mediaStore } = useContext(AppStore)
+
+  // #region 1. Kickstart initial list fetch
+  useEffect(() => {
+    const subscription = mediaStore.findMedia()
+
+    return () => subscription.unsubscribe()
+  }, [mediaStore])
+
+  // #endregion
+
   return (
     <>
       <NetworkObserver />

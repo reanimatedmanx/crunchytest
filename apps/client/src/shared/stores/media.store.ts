@@ -1,8 +1,17 @@
 import { action, makeObservable, observable } from 'mobx'
 import { MediaApiState } from '../enums/media-api-state.enum'
-import { from, switchMap, of, retry, timer, tap, throwError } from 'rxjs'
+import {
+  from,
+  switchMap,
+  of,
+  retry,
+  timer,
+  tap,
+  throwError,
+  catchError,
+} from 'rxjs'
 
-import { MediaApiClient } from '../clients'
+import { FindMediaQuery, MediaApiClient, Media } from '../clients'
 
 export class MediaStore {
   static HEALTHCHECK_RETRIES = 200
@@ -43,11 +52,19 @@ export class MediaStore {
     })
   }
 
+  private updateMediaList(data: Media | Media[]): void {
+    if (Array.isArray(data)) {
+      this.$mediaList.push(...data)
+    } else {
+      this.$mediaList.push(data)
+    }
+  }
+
   // #region Observables
 
-  @observable mediaList = []
-  @observable state: MediaApiState = MediaApiState.Unknown
-  @observable stateErrorMessage: string = ''
+  @observable $mediaList: Media[] = []
+  @observable $state: MediaApiState = MediaApiState.Unknown
+  @observable $stateErrorMessage: string = ''
 
   // #endregion
 
@@ -55,12 +72,41 @@ export class MediaStore {
 
   @action
   updateApiState(newState: MediaApiState) {
-    this.state = newState
+    this.$state = newState
   }
 
   @action
   updateApiStateErrorMessage(newState: string) {
-    this.stateErrorMessage = newState
+    this.$stateErrorMessage = newState
+  }
+
+  @action
+  findMedia(query?: FindMediaQuery) {
+    const observable = from(MediaApiClient.findMedia(query))
+
+    this.updateApiState(MediaApiState.Pending)
+
+    return observable
+      .pipe(
+        switchMap((response) => from(response.data)),
+        catchError((error) => of(error)),
+        tap(() => console.log('started')),
+      )
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+          this.updateMediaList(data)
+        },
+        error: (error) => {
+          console.error(error)
+          this.updateApiState(MediaApiState.Error)
+          this.updateApiStateErrorMessage(error)
+        },
+        complete: () => {
+          this.updateApiState(MediaApiState.Ready)
+          this.updateApiStateErrorMessage('')
+        },
+      })
   }
 
   // #endregion
