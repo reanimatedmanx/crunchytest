@@ -71,12 +71,12 @@ export class MediaStore {
   // #region Actions
 
   @action
-  updateApiState(newState: MediaApiState) {
+  protected updateApiState(newState: MediaApiState) {
     this.$state = newState
   }
 
   @action
-  updateApiStateErrorMessage(newState: string) {
+  protected updateApiStateErrorMessage(newState: string) {
     this.$stateErrorMessage = newState
   }
 
