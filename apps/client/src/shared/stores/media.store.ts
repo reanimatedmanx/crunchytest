@@ -11,7 +11,7 @@ import {
   catchError,
 } from 'rxjs'
 
-import { FindMediaQuery, MediaApiClient, Media } from '../clients'
+import { FindMediaDto, MediaApiClient, Media } from '../clients'
 
 export class MediaStore {
   static HEALTHCHECK_RETRIES = 200
@@ -81,7 +81,7 @@ export class MediaStore {
   }
 
   @action
-  findMedia(query?: FindMediaQuery) {
+  findMedia(query?: FindMediaDto) {
     const observable = from(MediaApiClient.findMedia(query))
 
     this.updateApiState(MediaApiState.Pending)

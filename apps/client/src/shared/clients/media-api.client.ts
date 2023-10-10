@@ -12,13 +12,37 @@ export interface Media {
   rating: number
 }
 
-export class FindMediaQuery {
+export class CreateMediaDto {
+  title!: string
+  type!: 'game' | 'tv-show' | 'movie'
+  genre!: string
+  releaseYear!: number
+  rating!: number
+
+  constructor(input?: Partial<CreateMediaDto>) {
+    Object.assign(this, input)
+  }
+}
+
+export class FindMediaDto {
   page: number = 0
   size: number = 100
   title?: string
   type?: string
 
-  constructor(input?: Partial<FindMediaQuery>) {
+  constructor(input?: Partial<FindMediaDto>) {
+    Object.assign(this, input)
+  }
+}
+
+export class UpdateMediaDto {
+  title?: string
+  type?: 'game' | 'tv-show' | 'movie'
+  genre?: string
+  releaseYear?: number
+  rating?: number
+
+  constructor(input?: Partial<UpdateMediaDto>) {
     Object.assign(this, input)
   }
 }
@@ -33,12 +57,28 @@ export class MediaApiClient {
     return MediaApiClient.client.get('/healthcheck')
   }
 
-  static findMedia(query?: FindMediaQuery) {
+  static createMedia(dto?: CreateMediaDto) {
+    return MediaApiClient.client.post('/media', dto)
+  }
+
+  static findMedia(dto?: FindMediaDto) {
     return MediaApiClient.client.get('/media/find', {
       params: {
-        ...new FindMediaQuery(),
-        ...query,
+        ...new FindMediaDto(),
+        ...dto,
       },
     })
+  }
+
+  static readMedia(id: string) {
+    return MediaApiClient.client.get(`/media/${id}`)
+  }
+
+  static updateMedia(id: string, dto: UpdateMediaDto) {
+    return MediaApiClient.client.put(`/media/${id}`, dto)
+  }
+
+  static deleteMedia(id: string) {
+    return MediaApiClient.client.get(`/media/${id}`)
   }
 }
