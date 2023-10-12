@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import { UIStore } from './ui.store'
-import { action, makeAutoObservable, observable } from 'mobx'
+import { action, computed, makeAutoObservable, observable } from 'mobx'
 import { AppState } from '../enums'
 import { MediaStore } from './media.store'
 
@@ -28,7 +28,7 @@ export class _AppStore {
   // #region Observables
 
   @observable
-  state: AppState = AppState.Idle
+  private $state: AppState = AppState.Idle
 
   // #endregion
 
@@ -36,14 +36,17 @@ export class _AppStore {
 
   @action
   updateState = (newState: AppState) => {
-    this.state = newState
+    this.$state = newState
   }
 
   // #endregion
 
   // #region Computeds
 
-  // ...
+  @computed
+  get state() {
+    return this.$state
+  }
 
   // #endregion
 }

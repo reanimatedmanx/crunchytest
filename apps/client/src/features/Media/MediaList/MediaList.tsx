@@ -10,7 +10,7 @@ export const MediaList: React.FC = observer(() => {
 
   return (
     <List
-      items={store.$mediaList.map((m) => (
+      items={store.mediaList.map((m) => (
         <MediaItem
           key={m.id}
           id={m.id}

@@ -17,25 +17,6 @@ export class MediaStore {
   static HEALTHCHECK_RETRIES = 200
   static ACTIVE_RETRY_DELAY_MS = 2000
 
-  $healthcheck = from(MediaApiClient.getHealthcheck()).pipe(
-    switchMap((response) => {
-      if (response.status !== 200) {
-        throw response.statusText
-      }
-
-      return of(response.data)
-    }),
-    retry({
-      count: MediaStore.HEALTHCHECK_RETRIES,
-      resetOnSuccess: true,
-      delay: (response, retries) =>
-        timer(retries * MediaStore.ACTIVE_RETRY_DELAY_MS).pipe(
-          tap(() => console.error(retries, response.code)),
-          switchMap(() => throwError(() => response.code)),
-        ),
-    }),
-  )
-
   constructor() {
     makeObservable(this)
 
@@ -66,10 +47,33 @@ export class MediaStore {
   }
 
   // #region Observables
+  private $healthcheck = from(MediaApiClient.getHealthcheck()).pipe(
+    switchMap((response) => {
+      if (response.status !== 200) {
+        throw response.statusText
+      }
 
-  @observable $mediaList: Media[] = []
-  @observable $state: MediaApiState = MediaApiState.Unknown
-  @observable $stateErrorMessage: string = ''
+      return of(response.data)
+    }),
+    retry({
+      count: MediaStore.HEALTHCHECK_RETRIES,
+      resetOnSuccess: true,
+      delay: (response, retries) =>
+        timer(retries * MediaStore.ACTIVE_RETRY_DELAY_MS).pipe(
+          tap(() => console.error(retries, response.code)),
+          switchMap(() => throwError(() => response.code)),
+        ),
+    }),
+  )
+
+  @observable
+  private $mediaList: Media[] = []
+
+  @observable
+  private $state: MediaApiState = MediaApiState.Unknown
+
+  @observable
+  private $stateErrorMessage: string = ''
 
   // #endregion
 
@@ -171,8 +175,23 @@ export class MediaStore {
   // #region Computed
 
   @computed
+  get mediaList() {
+    return this.$mediaList
+  }
+
+  @computed
   get mediaListCount() {
     return this.$mediaList.length
+  }
+
+  @computed
+  get state() {
+    return this.$state
+  }
+
+  @computed
+  get stateErrorMessage() {
+    return this.$stateErrorMessage
   }
 
   // #endregion

@@ -20,10 +20,10 @@ export const NetworkObserver = observer(() => {
 
   const apiError = useMemo(
     () =>
-      mediaStore.$state === MediaApiState.Error
-        ? `${mediaStore.$stateErrorMessage}: The Media API service is currently unavailable. Please try again later...`
+      mediaStore.state === MediaApiState.Error
+        ? `${mediaStore.stateErrorMessage}: The Media API service is currently unavailable. Please try again later...`
         : null,
-    [mediaStore.$state, mediaStore.$stateErrorMessage],
+    [mediaStore.state, mediaStore.stateErrorMessage],
   )
 
   const shouldShowError = useMemo(
