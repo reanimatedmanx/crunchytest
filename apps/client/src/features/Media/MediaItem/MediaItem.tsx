@@ -1,4 +1,12 @@
-import { Flex, Card, Inset, Text, Heading, Box } from '@radix-ui/themes'
+import {
+  Flex,
+  Card,
+  Inset,
+  Text,
+  Heading,
+  Box,
+  VisuallyHidden,
+} from '@radix-ui/themes'
 import styles from './MediaItem.module.css'
 import { Media } from '../../../shared/clients'
 import { TagGroup } from '../../../shared/components/TagGroup/TagGroup'
@@ -63,7 +71,7 @@ export const MediaItem: React.FC<MediaItemProps> = ({
             p="current"
             style={{
               minWidth: 120,
-              maxWidth: 120,
+              maxWidth: 310,
               height: 120,
               maxHeight: 120,
             }}
@@ -97,7 +105,7 @@ export const MediaItem: React.FC<MediaItemProps> = ({
             </Text>
           </Flex>
         </Flex>
-        <Flex direction="row" justify="between" style={{ minHeight: 40 }}>
+        <Flex direction="row" justify="between" style={{ minHeight: 44 }}>
           {tags ? <TagGroup tags={tags} /> : null}
           <ActionGroup mediaId={id} hovered={hovered} />
         </Flex>

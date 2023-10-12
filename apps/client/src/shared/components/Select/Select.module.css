@@ -8,7 +8,7 @@
   padding: 0 1.4rem;
   border-radius: var(--radius-2);
   font-size: var(--default-font-size);
-  color: var(--gray-9);
+  color: var(--gray-8);
   box-shadow: 0 0 0 0.125rem var(--gray-11);
   background: transparent;
   background-color: none;
@@ -16,10 +16,10 @@
 }
 
 .selectTrigger span {
-  color: var(--gray-9);
+  color: var(--gray-8);
 }
 
 .selectTrigger:focus {
-  box-shadow: 0 0 0 0.15rem var(--gray-9);
-  outline: var(--gray-9);
+  box-shadow: 0 0 0 0.15rem var(--gray-8);
+  outline: var(--gray-8);
 }

@@ -1,4 +1,4 @@
-import { Button, Flex } from '@radix-ui/themes'
+import { Button, Flex, Strong } from '@radix-ui/themes'
 import { EraserIcon } from '@radix-ui/react-icons'
 import { Input } from '../../../shared/components/Input'
 import { useCallback, useContext, useEffect, useRef, useState } from 'react'
@@ -74,18 +74,18 @@ export const MediaFilterBar: React.FC = () => {
           items={FILTER_BY_TYPE}
           value={mediaType}
           variant="soft"
-          placeholder="Filter By Type"
+          placeholder="By Type"
           onValueChange={handleFilter}
         />
-        <Button onClick={handleReset}>
-          <EraserIcon />
+        <Button onClick={handleReset} color="gray">
+          <EraserIcon color="orange" fontFamily="24px" />
           <Flex
             display={{
               initial: 'none',
               md: 'inline-flex',
             }}
           >
-            Reset
+            <Strong>Reset</Strong>
           </Flex>
         </Button>
       </Flex>

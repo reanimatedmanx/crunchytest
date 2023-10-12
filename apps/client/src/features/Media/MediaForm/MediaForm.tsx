@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react'
 import { BookmarkFilledIcon } from '@radix-ui/react-icons'
 import styles from './MediaForm.module.css'
-import { Button, Dialog, Flex } from '@radix-ui/themes'
+import { Button, Dialog, Flex, Strong } from '@radix-ui/themes'
 import { AddMediaButton } from '../shared'
 import { DialogOverlay, DialogPortal } from '@radix-ui/react-dialog'
 import { Input } from '../../../shared/components/Input'
@@ -107,14 +107,14 @@ export const MediaForm: React.FC = () => {
 
             <Flex gap="3" mt="4" justify="end">
               <Dialog.Close>
-                <Button variant="surface" color="gray">
-                  Cancel
+                <Button variant="solid" color="gray">
+                  <Strong>Cancel</Strong>
                 </Button>
               </Dialog.Close>
 
               <Button type="submit">
                 <BookmarkFilledIcon />
-                Create
+                <Strong>Create</Strong>
               </Button>
             </Flex>
           </form>

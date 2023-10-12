@@ -1,10 +1,10 @@
-import { Button, Flex } from '@radix-ui/themes'
+import { Button, Flex, Strong } from '@radix-ui/themes'
 import styles from './AddMediaButton.module.css'
 import { RocketIcon } from '@radix-ui/react-icons'
 import React from 'react'
 
 export const AddMediaButton: React.FC = React.forwardRef((props) => (
-  <Button className={styles.button} {...props}>
+  <Button className={styles.button} {...props} color="orange">
     <RocketIcon />
     <Flex
       display={{
@@ -12,7 +12,7 @@ export const AddMediaButton: React.FC = React.forwardRef((props) => (
         md: 'inline-flex',
       }}
     >
-      Add media
+      <Strong>Add media</Strong>
     </Flex>
   </Button>
 ))

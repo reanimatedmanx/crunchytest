@@ -8,10 +8,10 @@
   padding: 0 0 0 1rem;
   border-radius: var(--radius-2);
   font-size: var(--default-font-size);
-  color: var(--gray-3);
+  color: var(--gray-8);
   box-shadow: 0 0 0 0.125rem var(--gray-11);
 }
 
 .input:focus {
-  box-shadow: 0 0 0 0.15rem var(--gray-9);
+  box-shadow: 0 0 0 0.15rem var(--gray-8);
 }

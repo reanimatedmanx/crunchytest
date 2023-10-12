@@ -1,6 +1,6 @@
 .card {
   background: var(--gray-12);
-  border: 0.1rem solid #3f3f3f;
+  border: 0.1rem solid var(--gray-6);
 }
 
 .cardTitle {
@@ -8,7 +8,7 @@
 }
 
 .cardSubtitle {
-  color: var(--gray-9);
+  color: var(--gray-8);
 }
 
 .cardDescription {
