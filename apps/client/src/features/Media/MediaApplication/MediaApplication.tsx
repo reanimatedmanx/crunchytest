@@ -9,20 +9,23 @@ import { Logo } from '../../../shared/components/Logo'
 import { MediaFilterBar } from '../MediaFilterBar'
 import { MediaForm } from '../MediaForm'
 import { NetworkObserver } from './NetworkObserver'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AppStore } from '../../../shared/stores'
+import { autorun } from 'mobx'
 
 export const MediaApplication = observer(() => {
-  const { mediaStore } = useContext(AppStore)
+  const { uiStore, mediaStore } = useContext(AppStore)
 
-  // #region 1. Kickstart initial list fetch
-  useEffect(() => {
-    const subscription = mediaStore.findMedia()
-
-    return () => subscription.unsubscribe()
-  }, [mediaStore])
-
-  // #endregion
+  autorun(() => {
+    if (uiStore.queueSize > 0) {
+      for (const [name, payload] of uiStore.queue) {
+        if (name === 'CREATE_MEDIA') {
+          mediaStore.createMedia(payload)
+          uiStore.clearQueue()
+        }
+      }
+    }
+  })
 
   return (
     <>

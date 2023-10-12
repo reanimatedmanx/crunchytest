@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import { MediaApiState } from '../enums/media-api-state.enum'
 import {
   from,
@@ -11,7 +11,7 @@ import {
   catchError,
 } from 'rxjs'
 
-import { FindMediaDto, MediaApiClient, Media } from '../clients'
+import { FindMediaDto, MediaApiClient, Media, CreateMediaDto } from '../clients'
 
 export class MediaStore {
   static HEALTHCHECK_RETRIES = 200
@@ -48,6 +48,7 @@ export class MediaStore {
       complete: () => {
         this.updateApiState(MediaApiState.Ready)
         this.updateApiStateErrorMessage('')
+        this.findMedia()
       },
     })
   }
@@ -81,8 +82,8 @@ export class MediaStore {
   }
 
   @action
-  findMedia(query?: FindMediaDto) {
-    const observable = from(MediaApiClient.findMedia(query))
+  findMedia(dto?: FindMediaDto) {
+    const observable = from(MediaApiClient.findMedia(dto))
 
     this.updateApiState(MediaApiState.Pending)
 
@@ -90,11 +91,36 @@ export class MediaStore {
       .pipe(
         switchMap((response) => from(response.data)),
         catchError((error) => of(error)),
-        tap(() => console.log('started')),
       )
       .subscribe({
         next: (data) => {
-          console.log(data)
+          this.updateMediaList(data)
+        },
+        error: (error) => {
+          console.error(error)
+          this.updateApiState(MediaApiState.Error)
+          this.updateApiStateErrorMessage(error)
+        },
+        complete: () => {
+          this.updateApiState(MediaApiState.Ready)
+          this.updateApiStateErrorMessage('')
+        },
+      })
+  }
+
+  @action
+  createMedia(dto?: CreateMediaDto) {
+    const observable = from(MediaApiClient.createMedia(dto))
+
+    this.updateApiState(MediaApiState.Pending)
+
+    return observable
+      .pipe(
+        switchMap((response) => from([response.data])),
+        catchError((error) => of(error)),
+      )
+      .subscribe({
+        next: (data) => {
           this.updateMediaList(data)
         },
         error: (error) => {
@@ -111,9 +137,12 @@ export class MediaStore {
 
   // #endregion
 
-  // #region Computed fields
+  // #region Computed
 
-  // ...
+  @computed
+  get mediaListCount() {
+    return this.$mediaList.length
+  }
 
   // #endregion
 }

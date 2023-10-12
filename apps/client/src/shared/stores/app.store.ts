@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import { UIStore } from './ui.store'
-import { action, makeObservable, observable } from 'mobx'
+import { action, makeAutoObservable, observable } from 'mobx'
 import { AppState } from '../enums'
 import { MediaStore } from './media.store'
 
@@ -9,10 +9,12 @@ export class _AppStore {
   public mediaStore: MediaStore
 
   constructor() {
-    makeObservable(this)
+    makeAutoObservable(this)
 
     this.uiStore = new UIStore()
     this.mediaStore = new MediaStore()
+
+    this.updateState(AppState.Ready)
 
     window.ononline = () => {
       this.updateState(AppState.Ready)
@@ -38,6 +40,14 @@ export class _AppStore {
   }
 
   // #endregion
+
+  // #region Computeds
+
+  // ...
+
+  // #endregion
 }
 
-export const AppStore = createContext(new _AppStore())
+const store = new _AppStore()
+
+export const AppStore = createContext(store)
