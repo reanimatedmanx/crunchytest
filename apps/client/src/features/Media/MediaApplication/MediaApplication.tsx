@@ -12,7 +12,7 @@ import { NetworkObserver } from './NetworkObserver'
 import { useContext } from 'react'
 import { AppStore } from '../../../shared/stores'
 import { autorun } from 'mobx'
-import { CreateMediaDto } from '../../../shared/clients'
+import { CreateMediaDto, FindMediaDto } from '../../../shared/clients'
 
 export const MediaApplication = observer(() => {
   const { uiStore, mediaStore } = useContext(AppStore)
@@ -22,6 +22,10 @@ export const MediaApplication = observer(() => {
       for (const [name, payload] of uiStore.queue) {
         if (name === 'CREATE_MEDIA') {
           mediaStore.createMedia(payload as CreateMediaDto)
+        }
+
+        if (name === 'SEARCH_MEDIA') {
+          mediaStore.findMedia(payload as FindMediaDto)
         }
 
         if (name === 'DELETE_MEDIA') {
@@ -37,7 +41,15 @@ export const MediaApplication = observer(() => {
     <>
       <NetworkObserver />
       <Container>
-        <Flex direction="column" gap="5" mt="5">
+        <Flex
+          direction="column"
+          gap="5"
+          mt="5"
+          p={{
+            initial: '4',
+            lg: '0',
+          }}
+        >
           <Header>
             <Logo />
             <MediaForm />

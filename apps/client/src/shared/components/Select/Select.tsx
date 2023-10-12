@@ -3,16 +3,26 @@ import styles from './Select.module.css'
 
 export interface SelectProps {
   items: { label: string; value: string }[]
+  value?: string | null
   placeholder?: string
+  variant?: 'surface' | 'classic' | 'soft' | 'ghost'
+  onValueChange?: (value: string) => void
 }
 
 export const Select: React.FC<SelectProps> = ({
   items,
   placeholder = '...',
+  variant = 'surface',
+  value,
+  onValueChange,
 }) => (
-  <RadixSelect.Root name="type">
+  <RadixSelect.Root
+    name="type"
+    value={value || ''}
+    onValueChange={onValueChange}
+  >
     <RadixSelect.Trigger
-      variant="surface"
+      variant={variant}
       placeholder={placeholder}
       className={styles.selectTrigger}
     />

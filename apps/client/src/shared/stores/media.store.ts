@@ -55,9 +55,9 @@ export class MediaStore {
 
   private updateMediaList(data: Media | Media[]): void {
     if (Array.isArray(data)) {
-      this.$mediaList.push(...data)
+      this.$mediaList = data
     } else {
-      this.$mediaList.push(data)
+      this.$mediaList = [...this.$mediaList, data]
     }
   }
 
@@ -93,7 +93,7 @@ export class MediaStore {
 
     return observable
       .pipe(
-        switchMap((response) => from(response.data)),
+        switchMap((response) => from([response.data])),
         catchError((error) => of(error)),
       )
       .subscribe({

@@ -7,7 +7,16 @@ export interface TagGroupProps {
 }
 
 export const TagGroup: React.FC<TagGroupProps> = ({ tags }) => (
-  <Flex gap="2">
+  <Flex
+    gap={{
+      initial: '5',
+      xs: '3',
+    }}
+    direction={{
+      initial: 'column',
+      xs: 'row',
+    }}
+  >
     {tags.map((t) => (
       <Badge className={styles.badge} size="1" variant="solid" radius="full">
         <Strong className={styles.badgeText}>{t}</Strong>

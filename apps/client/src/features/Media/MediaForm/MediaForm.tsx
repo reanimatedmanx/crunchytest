@@ -7,6 +7,7 @@ import { DialogOverlay, DialogPortal } from '@radix-ui/react-dialog'
 import { Input } from '../../../shared/components/Input'
 import { Select } from '../../../shared/components/Select'
 import { AppStore } from '../../../shared/stores'
+import { FILTER_BY_TYPE } from '../../../shared/constants'
 
 export const MediaForm: React.FC = () => {
   const { uiStore } = useContext(AppStore)
@@ -67,22 +68,7 @@ export const MediaForm: React.FC = () => {
                 <label className={styles.label} htmlFor="type">
                   Type
                 </label>
-                <Select
-                  items={[
-                    {
-                      label: '📺 Tv Show',
-                      value: 'tv-show',
-                    },
-                    {
-                      label: '🎬 Movie',
-                      value: 'movie',
-                    },
-                    {
-                      label: '🕹️ Game',
-                      value: 'game',
-                    },
-                  ]}
-                />
+                <Select items={FILTER_BY_TYPE} />
               </fieldset>
               <fieldset className={styles.fieldSet}>
                 <label className={styles.label} htmlFor="genre">

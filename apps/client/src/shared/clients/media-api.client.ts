@@ -28,8 +28,8 @@ export class CreateMediaDto implements Omit<Media, 'id'> {
 export class FindMediaDto {
   page: number = 0
   size: number = 100
-  title?: string
-  type?: string
+  title?: string | null
+  type?: string | null
 
   constructor(input?: Partial<FindMediaDto>) {
     Object.assign(this, input)
