@@ -1,43 +1,54 @@
 import { MediaType } from '../src/shared/enums'
-import { PrismaClient } from '@prisma/client'
+import { Media, PrismaClient } from '@prisma/client'
+import { faker } from '@faker-js/faker'
 
 const prisma = new PrismaClient()
 
+async function* seeds() {
+  for (let id = 1; id <= 1000; id++) {
+    yield {
+      id,
+      title: `${faker.music.songName()} ${faker.hacker.verb()} ${
+        faker.string.uuid().split('-')[0]
+      } `,
+      genre: faker.music.genre(),
+      type: Object.values(MediaType)[faker.number.int({ min: 0, max: 2 })],
+      rating: faker.number.int({ min: 0, max: 10 }),
+      releaseYear: faker.defaultRefDate().getFullYear(),
+    } satisfies Media
+  }
+}
+
 async function main() {
   // #region Seed MediaType
-  Object.values(MediaType).forEach(async (name) => {
-    await prisma.mediaType.upsert({
-      where: { name },
-      update: {},
-      create: {
-        name,
+  for await (const typeName of Object.values(MediaType)) {
+    await prisma.mediaType.create({
+      data: {
+        name: typeName,
       },
     })
-  })
+  }
 
   // #endregion
 
   // #region Seed Media
-  await prisma.media.upsert({
-    where: { title: 'One Piece' },
-    update: {},
-    create: {
-      title: 'One Piece',
-      mediaType: {
-        connectOrCreate: {
-          create: {
-            name: MediaType.TVShow,
-          },
-          where: {
-            name: MediaType.TVShow,
+
+  for await (const seed of seeds()) {
+    await prisma.media.create({
+      data: {
+        title: seed.title,
+        mediaType: {
+          connect: {
+            name: seed.type,
           },
         },
+        genre: seed.genre,
+        rating: seed.rating,
+        releaseYear: seed.releaseYear,
       },
-      genre: 'Comedy',
-      releaseYear: 1999,
-      rating: 10,
-    },
-  })
+    })
+  }
+
   // #endregion
 }
 main()
