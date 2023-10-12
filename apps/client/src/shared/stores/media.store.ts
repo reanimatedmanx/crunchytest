@@ -61,6 +61,10 @@ export class MediaStore {
     }
   }
 
+  private removeMediaById(id: string): void {
+    this.$mediaList = this.$mediaList.filter((m) => m.id !== id)
+  }
+
   // #region Observables
 
   @observable $mediaList: Media[] = []
@@ -122,6 +126,33 @@ export class MediaStore {
       .subscribe({
         next: (data) => {
           this.updateMediaList(data)
+        },
+        error: (error) => {
+          console.error(error)
+          this.updateApiState(MediaApiState.Error)
+          this.updateApiStateErrorMessage(error)
+        },
+        complete: () => {
+          this.updateApiState(MediaApiState.Ready)
+          this.updateApiStateErrorMessage('')
+        },
+      })
+  }
+
+  @action
+  deleteMedia(id: string) {
+    const observable = from(MediaApiClient.deleteMedia(id))
+
+    this.updateApiState(MediaApiState.Pending)
+
+    return observable
+      .pipe(
+        switchMap((response) => from([response.data])),
+        catchError((error) => of(error)),
+      )
+      .subscribe({
+        next: (data) => {
+          this.removeMediaById(data.id)
         },
         error: (error) => {
           console.error(error)

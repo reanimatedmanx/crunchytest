@@ -87,10 +87,10 @@ export class MediaController {
 
   @Delete(':id')
   @Header('Cache-Control', 'none')
-  async deleteMedia(@Query() query: MediaDeleteDto) {
+  async deleteMedia(@Param('id') id: number) {
     return this.mediaService.deleteMedia({
       where: {
-        id: query.id,
+        id,
       },
     })
   }

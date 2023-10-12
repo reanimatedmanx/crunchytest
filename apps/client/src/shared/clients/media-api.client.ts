@@ -4,15 +4,16 @@ import axios, { AxiosInstance } from 'axios'
  * TODO: Should be ideally provided by the SDK,
  * generated based on OpenAPI schema, or else.
  */
-export interface Media {
-  title: string
-  type: string
-  genre: string
-  releaseYear: number
-  rating: number
+export class Media {
+  id!: string
+  title!: string
+  type!: 'game' | 'tv-show' | 'movie'
+  genre!: string
+  releaseYear!: number
+  rating!: number
 }
 
-export class CreateMediaDto {
+export class CreateMediaDto implements Omit<Media, 'id'> {
   title!: string
   type!: 'game' | 'tv-show' | 'movie'
   genre!: string
@@ -35,12 +36,12 @@ export class FindMediaDto {
   }
 }
 
-export class UpdateMediaDto {
-  title?: string
-  type?: 'game' | 'tv-show' | 'movie'
-  genre?: string
-  releaseYear?: number
-  rating?: number
+export class UpdateMediaDto implements Omit<Media, 'id'> {
+  title!: string
+  type!: 'game' | 'tv-show' | 'movie'
+  genre!: string
+  releaseYear!: number
+  rating!: number
 
   constructor(input?: Partial<UpdateMediaDto>) {
     Object.assign(this, input)
@@ -79,6 +80,6 @@ export class MediaApiClient {
   }
 
   static deleteMedia(id: string) {
-    return MediaApiClient.client.get(`/media/${id}`)
+    return MediaApiClient.client.delete(`/media/${id}`)
   }
 }

@@ -7,7 +7,6 @@ type ActionName =
   | 'READ_MEDIA'
   | 'UPDATE_MEDIA'
   | 'DELETE_MEDIA'
-type ActionPayload = CreateMediaDto
 
 export class UIStore {
   constructor() {
@@ -17,15 +16,24 @@ export class UIStore {
   // #region Observables
 
   @observable
-  private $actionsQueue: Map<ActionName, ActionPayload> = new Map()
+  private $actionsQueue: Map<
+    ActionName,
+    | Parameters<typeof this.requestCreateMedia>[0]
+    | Parameters<typeof this.requestDeleteMedia>[0]
+  > = new Map()
 
   // #endregion
 
   // #region Actions
 
   @action
-  requestCreateMedia(payload: CreateMediaDto) {
+  requestCreateMedia(payload: CreateMediaDto): void {
     this.$actionsQueue.set('CREATE_MEDIA', payload)
+  }
+
+  @action
+  requestDeleteMedia(id: string): void {
+    this.$actionsQueue.set('DELETE_MEDIA', id)
   }
 
   @action

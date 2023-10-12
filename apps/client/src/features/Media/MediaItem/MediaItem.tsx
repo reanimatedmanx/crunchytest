@@ -10,6 +10,7 @@ import { ActionGroup } from './ActionGroup'
 export interface MediaItemProps extends Media {}
 
 export const MediaItem: React.FC<MediaItemProps> = ({
+  id,
   title,
   type,
   genre,
@@ -98,7 +99,7 @@ export const MediaItem: React.FC<MediaItemProps> = ({
         </Flex>
         <Flex direction="row" justify="between" style={{ minHeight: 40 }}>
           {tags ? <TagGroup tags={tags} /> : null}
-          <ActionGroup hovered={hovered} />
+          <ActionGroup mediaId={id} hovered={hovered} />
         </Flex>
       </Flex>
     </Card>

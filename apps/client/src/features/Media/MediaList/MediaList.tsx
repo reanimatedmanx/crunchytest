@@ -11,6 +11,7 @@ export const MediaList: React.FC = observer(() => {
     <List
       items={store.$mediaList.map((m) => (
         <MediaItem
+          id={m.id}
           title={m.title}
           type={m.type}
           genre={m.genre}
