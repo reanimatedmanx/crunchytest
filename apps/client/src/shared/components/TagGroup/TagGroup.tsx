@@ -17,8 +17,14 @@ export const TagGroup: React.FC<TagGroupProps> = ({ tags }) => (
       xs: 'row',
     }}
   >
-    {tags.map((t) => (
-      <Badge className={styles.badge} size="1" variant="solid" radius="full">
+    {tags.map((t, index) => (
+      <Badge
+        key={`badge-${index}-${Date.now()}`}
+        className={styles.badge}
+        size="1"
+        variant="solid"
+        radius="full"
+      >
         <Strong className={styles.badgeText}>{t}</Strong>
       </Badge>
     ))}

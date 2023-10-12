@@ -27,8 +27,10 @@ export const Select: React.FC<SelectProps> = ({
       className={styles.selectTrigger}
     />
     <RadixSelect.Content variant="soft">
-      {items.map(({ label, value }) => (
-        <RadixSelect.Item value={value}>{label}</RadixSelect.Item>
+      {items.map(({ label, value }, index) => (
+        <RadixSelect.Item key={index + label + value} value={value}>
+          {label}
+        </RadixSelect.Item>
       ))}
     </RadixSelect.Content>
   </RadixSelect.Root>
