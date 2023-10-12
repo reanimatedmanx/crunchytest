@@ -1,0 +1,25 @@
+.selectTrigger {
+  flex: 1;
+  display: flex;
+  max-width: inherit;
+  min-height: 2.4rem;
+  line-height: 1;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  border-radius: var(--radius-2);
+  font-size: var(--default-font-size);
+  color: var(--gray-9);
+  box-shadow: 0 0 0 0.125rem var(--gray-11);
+  background: transparent;
+  background-color: none;
+  background-image: none;
+}
+
+.selectTrigger span {
+  color: var(--gray-9);
+}
+
+.selectTrigger:focus {
+  box-shadow: 0 0 0 0.15rem var(--gray-9);
+  outline: var(--gray-9);
+}

@@ -5,6 +5,7 @@ import { Button, Dialog, Flex } from '@radix-ui/themes'
 import { AddMediaButton } from '../shared'
 import { DialogOverlay, DialogPortal } from '@radix-ui/react-dialog'
 import { Input } from '../../../shared/components/Input'
+import { Select } from '../../../shared/components/Select'
 import { AppStore } from '../../../shared/stores'
 
 export const MediaForm: React.FC = () => {
@@ -66,11 +67,21 @@ export const MediaForm: React.FC = () => {
                 <label className={styles.label} htmlFor="type">
                   Type
                 </label>
-                <Input
-                  id="type"
-                  name="type"
-                  placeholder="..."
-                  defaultValue=""
+                <Select
+                  items={[
+                    {
+                      label: '📺 Tv Show',
+                      value: 'tv-show',
+                    },
+                    {
+                      label: '🎬 Movie',
+                      value: 'movie',
+                    },
+                    {
+                      label: '🕹️ Game',
+                      value: 'game',
+                    },
+                  ]}
                 />
               </fieldset>
               <fieldset className={styles.fieldSet}>
