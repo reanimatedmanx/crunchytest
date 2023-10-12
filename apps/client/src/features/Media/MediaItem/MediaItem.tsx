@@ -64,16 +64,23 @@ export const MediaItem: React.FC<MediaItemProps> = ({
       onMouseLeave={handleMouseOverlap}
     >
       <Flex direction="column" gap="5">
-        <Flex direction="row" gap="5">
+        <Flex
+          align={{
+            initial: 'center',
+            sm: 'start',
+          }}
+          direction={{
+            initial: 'column',
+            sm: 'row',
+          }}
+          gap="6"
+        >
           <Inset
             clip="padding-box"
             side="all"
             p="current"
             style={{
-              minWidth: 120,
-              maxWidth: 310,
-              height: 120,
-              maxHeight: 120,
+              maxWidth: 380,
             }}
           >
             {/* ? TODO: Extend schema to provide `thumbnailUrl` field to S3 Bucket */}
@@ -91,7 +98,7 @@ export const MediaItem: React.FC<MediaItemProps> = ({
               />
             </picture>
           </Inset>
-          <Flex direction="column">
+          <Flex direction="column" gap="2">
             <Heading as="h2" className={styles.cardTitle}>
               {title}
             </Heading>
