@@ -3,6 +3,7 @@ import { List } from '../../../shared/components/List'
 import { useContext } from 'react'
 import { AppStore } from '../../../shared/stores'
 import { observer } from 'mobx-react'
+import { NoData } from './NoData'
 
 export const MediaList: React.FC = observer(() => {
   const store = useContext(AppStore).mediaStore
@@ -19,6 +20,7 @@ export const MediaList: React.FC = observer(() => {
           releaseYear={m.releaseYear}
         />
       ))}
+      fallback={<NoData />}
     />
   )
 })
