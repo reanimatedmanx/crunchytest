@@ -79,7 +79,7 @@ pnpm lint
 
 ### Format
 
-Lints all the projects in the workspace.
+Formats all the projects in the workspace.
 
 ```bash 
 pnpm format
