@@ -24,6 +24,8 @@ nvm use
 
 #### Install dependencies
 
+From the root of the workspace.
+
 ```bash
 pnpm i
 ```
@@ -32,14 +34,30 @@ pnpm i
 
 Initialize & seed the database
 
+Go to `services\media-service-api\.env` and set the `SEED_COUNT` to your desired value.
+
+**Default**: `1000`
+
 ```bash
-pnpm i
+pnpm db:init
 ```
 
-**Run 🤘**
+#### Run 🤘
+
+Runs both the client & the api.
+
 ```bash
 pnpm dev
 ```
+
+#### URLs
+
+| Component | URL |
+| -- | -- |
+| **App** | `http://localhost:3000` |
+| **Storybook (WIP)** | `http://localhost:6006` |
+| **API** | `http://localhost:4200` |
+| **API Docs** | `http://localhost:4200/docs` |
 
 ### With Docker / Podman
 
@@ -57,4 +75,35 @@ The `client` and `media-service-api` are encapsulated in this tiny monorepo with
 
 ### Communication
 ![image](https://github.com/reanimatedmanx/crunchytest/assets/32410574/797ac20f-e5de-41e3-bc98-9b91dbca1993)
- 
+
+
+## Extra scripts
+
+### Lint
+Lints all the projects in the workspace.
+
+```bash
+pnpm lint
+```
+
+### Format
+
+Formats all the projects in the workspace.
+
+```bash 
+pnpm format
+```
+
+### Reset the DB
+
+Lints all the projects in the workspace where the `db:reset` alias is present.
+
+```bash 
+pnpm db:reset
+```
+
+### Launch Storybook (WIP)
+
+```bash
+ pnpm --filter=@crunchytest/client storybook
+```
