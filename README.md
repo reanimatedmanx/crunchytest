@@ -52,17 +52,12 @@ pnpm dev
 
 #### URLs
 
-**App**
-`http://localhost:3000`
-
-**Storybook (WIP)**
-`http://localhost:6006`
-
-**API**
-`http://localhost:4200/`
-
-**API Docs**
-`http://localhost:4200/docs/`
+| Component | URL |
+| -- | -- |
+| **App** | `http://localhost:3000` |
+| **Storybook (WIP)** | `http://localhost:6006` |
+| **API** | `http://localhost:4200` |
+| **API Docs** | `http://localhost:4200/docs` |
 
 ### With Docker / Podman
 
