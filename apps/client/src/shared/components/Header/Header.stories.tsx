@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Input } from './Header'
+import { Header } from './Header'
 
 const meta = {
   title: 'Components/Header',
-  component: Input,
+  component: Header,
   parameters: {
     layout: 'centered',
   },
