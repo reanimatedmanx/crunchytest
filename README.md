@@ -37,7 +37,7 @@ pnpm i
 ```
 
 **Run 🤘**
-```bash`
+```bash
 pnpm dev
 ```
 
