@@ -1,15 +1,7 @@
-import {
-  Flex,
-  Card,
-  Inset,
-  Text,
-  Heading,
-  Box,
-  VisuallyHidden,
-} from '@radix-ui/themes'
+import { Flex, Card, Inset, Text, Heading, Box } from '@radix-ui/themes'
 import styles from './MediaItem.module.css'
 import { Media } from '../../../shared/clients'
-import { TagGroup } from '../../../shared/components/TagGroup/TagGroup'
+import { TagGroup } from '../../../shared/components'
 import { useCallback, useMemo, useState } from 'react'
 import { ActionGroup } from './ActionGroup'
 

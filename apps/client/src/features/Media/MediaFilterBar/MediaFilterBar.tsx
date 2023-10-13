@@ -1,10 +1,9 @@
 import { Button, Flex, Strong } from '@radix-ui/themes'
 import { EraserIcon } from '@radix-ui/react-icons'
-import { Input } from '../../../shared/components/Input'
+import { Input, Select } from '../../../shared/components'
 import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { AppStore } from '../../../shared/stores'
 import { useDebouncedState } from '../../../shared/hooks'
-import { Select } from '../../../shared/components/Select'
 import { FILTER_BY_TYPE } from '../../../shared/constants'
 
 export const MediaFilterBar: React.FC = () => {

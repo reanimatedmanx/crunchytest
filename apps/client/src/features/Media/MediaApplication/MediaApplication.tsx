@@ -1,18 +1,16 @@
 // TODO Add import aliases
 // TODO Setup import order ESLint rule
-import { Header } from '../../../shared/components/Header'
-import { Content } from '../../../shared/components/Content'
+import { CreateMediaDto, FindMediaDto } from '../../../shared/clients'
+import { Header, Content, Logo } from '../../../shared/components'
 import { MediaList } from '../MediaList'
 import { observer } from 'mobx-react'
 import { Container, Flex } from '@radix-ui/themes'
-import { Logo } from '../../../shared/components/Logo'
 import { MediaFilterBar } from '../MediaFilterBar'
 import { MediaForm } from '../MediaForm'
 import { NetworkObserver } from './NetworkObserver'
 import { useContext } from 'react'
 import { AppStore } from '../../../shared/stores'
 import { autorun } from 'mobx'
-import { CreateMediaDto, FindMediaDto } from '../../../shared/clients'
 
 export const MediaApplication = observer(() => {
   const { uiStore, mediaStore } = useContext(AppStore)

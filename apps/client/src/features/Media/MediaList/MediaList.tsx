@@ -1,12 +1,12 @@
 import { Flex } from '@radix-ui/themes'
 import { MediaItem } from '../MediaItem'
-import { List } from '../../../shared/components/List'
+import { List } from '../../../shared/components'
 import { useContext, useMemo } from 'react'
 import { AppStore } from '../../../shared/stores'
 import { observer } from 'mobx-react'
 import { NoData } from './NoData'
 import { AppState } from '../../../shared/enums'
-import { MediaApiState } from '../../../shared/enums/media-api-state.enum'
+import { MediaApiState } from '../../../shared/enums'
 
 export const MediaList: React.FC = observer(() => {
   const store = useContext(AppStore)
