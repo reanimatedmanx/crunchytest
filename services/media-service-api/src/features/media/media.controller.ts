@@ -10,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common'
 import { MediaService } from './media.service'
-import { MediaDto, MediaCreateDto, MediaUpdateDto, MediaDeleteDto } from './dto'
+import { MediaDto, MediaCreateDto, MediaUpdateDto } from './dto'
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { MediaFindDto } from './dto/media-find.dto'
 
