@@ -115,12 +115,10 @@ export const MediaForm: React.FC = () => {
                   <Strong>Cancel</Strong>
                 </Button>
               </Dialog.Close>
-              <Dialog.Close>
-                <Button type="submit">
-                  <BookmarkFilledIcon />
-                  <Strong>Create</Strong>
-                </Button>
-              </Dialog.Close>
+              <Button type="submit">
+                <BookmarkFilledIcon />
+                <Strong>Create</Strong>
+              </Button>
             </Flex>
           </form>
         </Dialog.Content>
