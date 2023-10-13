@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "description": "A code challenge to assess my knowledge and skills in TypeScript, React, RxJS, OOP, SOLID and MobX",
   "scripts": {
-    "dev": "pnpm --filter=@crunchytest/* dev",
-    "format": "pnpm --filter=@crunchytest/* format",
-    "lint": "pnpm --filter=@crunchytest/* lint"
+    "dev": "pnpm -r dev",
+    "format": "pnpm -r format",
+    "lint": "pnpm -r lint",
+    "db:init": "pnpm -r db:init"
   },
   "keywords": [],
   "author": "Reanimated Man X <mail@rmx.codes>",
