@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import { BookmarkFilledIcon } from '@radix-ui/react-icons'
 import styles from './MediaForm.module.css'
 import { Button, Dialog, Flex, Strong } from '@radix-ui/themes'
@@ -10,6 +10,7 @@ import { FILTER_BY_TYPE } from '../../../shared/constants'
 
 export const MediaForm: React.FC = () => {
   const { uiStore } = useContext(AppStore)
+  const [uiMediaType, setUiMediaType] = useState('')
 
   const handleFormSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,7 +68,11 @@ export const MediaForm: React.FC = () => {
                 <label className={styles.label} htmlFor="type">
                   Type
                 </label>
-                <Select items={FILTER_BY_TYPE} />
+                <Select
+                  value={uiMediaType}
+                  items={FILTER_BY_TYPE}
+                  onValueChange={setUiMediaType}
+                />
               </fieldset>
               <fieldset className={styles.fieldSet}>
                 <label className={styles.label} htmlFor="genre">
@@ -110,11 +115,12 @@ export const MediaForm: React.FC = () => {
                   <Strong>Cancel</Strong>
                 </Button>
               </Dialog.Close>
-
-              <Button type="submit">
-                <BookmarkFilledIcon />
-                <Strong>Create</Strong>
-              </Button>
+              <Dialog.Close>
+                <Button type="submit">
+                  <BookmarkFilledIcon />
+                  <Strong>Create</Strong>
+                </Button>
+              </Dialog.Close>
             </Flex>
           </form>
         </Dialog.Content>
