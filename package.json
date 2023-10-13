@@ -6,7 +6,8 @@
     "dev": "pnpm -r dev",
     "format": "pnpm -r format",
     "lint": "pnpm -r lint",
-    "db:init": "pnpm -r db:init"
+    "db:init": "pnpm -r db:init",
+    "db:reset": "pnpm -r db:reset"
   },
   "keywords": [],
   "author": "Reanimated Man X <mail@rmx.codes>",
