@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker'
 const prisma = new PrismaClient()
 
 async function* seeds() {
-  for (let id = 1; id <= 1000; id++) {
+  for (let id = 1; id <= Number(process.env.SEED_COUNT) ?? 0; id++) {
     yield {
       id,
       title: `${faker.music.songName()} ${faker.hacker.verb()} ${
