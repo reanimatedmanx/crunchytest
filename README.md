@@ -77,12 +77,18 @@ Lints all the projects in the workspace.
 pnpm lint
 ```
 
-**Format**
+### Format
+
+Lints all the projects in the workspace.
+
 ```bash 
-pnpm db:reset
+pnpm format
 ```
 
- **Reset the DB**
+### Reset the DB
+
+Lints all the projects in the workspace where the `db:reset` alias is present.
+
 ```bash 
 pnpm db:reset
 ```
