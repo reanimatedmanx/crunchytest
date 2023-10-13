@@ -50,6 +50,20 @@ Runs both the client & the api.
 pnpm dev
 ```
 
+#### URLs
+
+**App**
+`http://localhost:3000`
+
+**Storybook (WIP)**
+`http://localhost:6006`
+
+**API**
+`http://localhost:4200/`
+
+**API Docs**
+`http://localhost:4200/docs/`
+
 ### With Docker / Podman
 
 `TBD`
@@ -91,4 +105,10 @@ Lints all the projects in the workspace where the `db:reset` alias is present.
 
 ```bash 
 pnpm db:reset
+```
+
+### Launch Storybook (WIP)
+
+```bash
+ pnpm --filter=@crunchytest/client storybook
 ```
