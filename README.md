@@ -47,6 +47,8 @@ pnpm dev
 
 ## Architecture
 
+A brief, simplified overview of the architecture.
+
 ### Application / Services
 
 The `client` and `media-service-api` are encapsulated in this tiny monorepo with `pnpm`
